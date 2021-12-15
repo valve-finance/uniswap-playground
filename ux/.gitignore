@@ -1,0 +1,9 @@
+node_modules
+s3sync.sh
+build
+.env
+package-lock.json
+yarn.lock
+
+# Local Netlify folder
+.netlify

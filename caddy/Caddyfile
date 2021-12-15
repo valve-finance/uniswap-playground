@@ -1,0 +1,11 @@
+:3031 {
+    reverse_proxy router:3031
+}
+
+:3032 {
+    reverse_proxy tracker:3032
+}
+
+:3000 {
+    reverse_proxy ux:3000
+}

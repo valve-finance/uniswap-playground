@@ -1,0 +1,75 @@
+version: "2.1"
+
+networks:
+  playground-net:
+    driver: bridge
+
+volumes:
+  back-notused:
+
+services:
+  router:
+    build:
+      context: router
+    command: npm run develop socketServer
+    container_name: router
+    volumes:
+      - ./router/src:/code/src:ro
+      - ./router/package.json:/code/package.json
+      - ./router/package-lock.json:/code/package-lock.json
+      - back-notused:/opt/app/node_modules
+    restart: unless-stopped
+    expose:
+      - 3031
+    networks:
+      - playground-net
+    labels:
+      org.label-schema.group: "playground"
+  tracker:
+    build:
+      context: tracker
+    command: npm run develop
+    container_name: tracker
+    volumes:
+      - ./tracker/src:/code/src:ro
+      - ./tracker/package.json:/code/package.json
+      - ./tracker/package-lock.json:/code/package-lock.json
+      - back-notused:/opt/app/node_modules
+    restart: unless-stopped
+    expose:
+      - 3032
+    networks:
+      - playground-net
+    labels:
+      org.label-schema.group: "playground"
+  ux:
+    build:
+      context: ux
+    container_name: ux
+    volumes:
+      - ./ux/src:/code/src
+      - /code/node_modules
+    depends_on:
+      - router
+      - tracker
+    restart: unless-stopped
+    expose:
+      - 3000
+    networks:
+      - playground-net
+    labels:
+      org.label-schema.group: "playground"
+  caddy:
+    image: caddy:2.3.0
+    container_name: caddy
+    ports:
+      - "3000:3000"
+      - "3031:3031"
+      - "3032:3032"
+    volumes:
+      - ./caddy:/etc/caddy
+    restart: unless-stopped
+    networks:
+      - playground-net
+    labels:
+      org.label-schema.group: "playground"
