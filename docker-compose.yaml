@@ -1,14 +1,13 @@
 version: "2.1"
-
 networks:
   playground-net:
     driver: bridge
-
 volumes:
   back-notused:
-
 services:
   router:
+    environment:
+      - INFURA_API_KEY=${INFURA_API_KEY}
     build:
       context: router
     command: npm run develop socketServer
