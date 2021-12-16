@@ -53,7 +53,7 @@ export const getUniRouteV2 = async (source: string, destination: string, amount:
     fromTokenContractAddress: source.toLowerCase(),
     toTokenContractAddress: destination.toLowerCase(),
     ethereumAddress: ETH_ADDR,
-    providerUrl: `https://mainnet.infura.io/v3/ba977c23c42e48e588a700861117cb27`,
+    providerUrl: `https://mainnet.infura.io/v3/${INFURA_API_KEY}`,
     chainId: ChainId.MAINNET,
     settings,
   })
