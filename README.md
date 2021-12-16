@@ -3,6 +3,14 @@ This work is part of Uniswap's grant program. It will focus on the Uniswap V2 pr
 
 You can learn more about the features and concepts here: https://twitter.com/getsimpleid/status/1429893819559038982
 
+## Install
+Clone this repository and `cd` into uniswap-playground directory and run compose up:
+```bash
+git clone https://github.com/valve-finance/uniswap-playground
+cd uniswap-playground
+INFURA_API_KEY='YOUR_API_KEY_HERE' docker-compose up -d
+```
+
 ## Product Playground
 https://playground.valve.finance/
 
