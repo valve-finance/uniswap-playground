@@ -1,7 +1,9 @@
 # Uniswap V2 Playground
 This work is part of Uniswap's grant program. It will focus on the Uniswap V2 protocol, but aims for extensibilty to Uniswap V3.
 
-You can learn more about the features and concepts here: https://twitter.com/getsimpleid/status/1429893819559038982
+
+## Research & Development
+You can learn more about the features and concepts here: https://github.com/valve-finance/uniswap-playground/blob/main/mgtd.pdf
 
 ## Install & run locally
 Clone this repository and `cd` into uniswap-playground directory and run compose up:
